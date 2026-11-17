@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="utf-8" />
+
+   <title>Happy Birthday To You!</title>
+  <meta name="descriptison" content=">God always blesses genuine, humble and kind people like you. And today, you’re likely to get double the blessings since it’s your Birthday! May all your birthday wishes come true!">
+  <meta name="keywords" content="Hapy Birthday,Happy,Birthday,Love,one">
+  <meta name="msapplication-TileColor" content="#FF0000">
+  <meta name="theme-color" content="#FF0000">
+  <meta property="og:title" content="Happy Birthday To You!">
+<meta property="og:description" content="God always blesses genuine, humble and kind people like you. And today, you’re likely to get double the blessings since it’s your Birthday! May all your birthday wishes come true!">
+<meta property="og:image" content="http://hbdy.github.io/img/image.jpg">
+<meta property="og:url" content="http://hbdy.github.io">
+<meta name="twitter:title" content="Happy Birthday To You!">
+<meta name="twitter:description" content="God always blesses genuine, humble and kind people like you. And today, you’re likely to get double the blessings since it’s your Birthday! May all your birthday wishes come true!">
+<meta name="twitter:image" content="http://hbdy.github.io/img/image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:900'>
+
+      <link rel="stylesheet" href="css/main.css">
+ 
+  
+</head>
+
+<body>
+
+  <h1>Happy Birthday! <em id ="friendName"></em></h1>
+  </br>
+  <p><em id="message" style = 'color : #c9ff7e; font-family:  monospace;'>God always blesses genuine, humble and kind people like you. And today, you’re likely to get double the blessings since it’s your Birthday! May all your birthday wishes come true!!</em></p>
+<h2>From @ <em id ="yfriendName" style = 'color : #25b4db; font-family:  monospace;'></em></h2>
+<canvas id="birthday"></canvas>
+  
+  
+    <script>
+        //get name from url
+      function getParameterByName(name, url) {
+          if (!url) url = window.location.href;
+          name = name.replace(/[\[\]]/g, '\\$&');
+          var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+              results = regex.exec(url);
+          if (!results) return "";
+          if (!results[2]) return '';
+          var str = decodeURIComponent(results[2].replace(/\+/g, ' '));
+          return rot13(str);
+      }
+        //get message from url
+      function getParameterByMessage(message, url) {
+          if (!url) url = window.location.href;
+          message = message.replace(/[\[\]]/g, '\\$&');
+          var regex = new RegExp('[?&]' + message + '(=([^&#]*)|&|#|$)'),
+              results = regex.exec(url);
+          var str ="The sunshine that streams down on your face today will bring you the Lord’s blessings and good wishes. Enjoy your special day!"
+          var str2= "<br><em style = 'color : #ff8a5b; font-family:  monospace;'> and May all your birthday wishes come true!!</em>"
+          str = str +str2;
+          if (!results) return str;
+          if (!results[2]) return str;
+          str = decodeURIComponent(results[2].replace(/\+/g, ' '));
+          str = rot13(str) + str2;
+          return str
+      }
+
+       function getParameterByyName(yname, url) {
+          if (!url) url = window.location.href;
+          yname = yname.replace(/[\[\]]/g, '\\$&');
+          var regex = new RegExp('[?&]' + yname + '(=([^&#]*)|&|#|$)'),
+              results = regex.exec(url);
+          if (!results) return "";
+          if (!results[2]) return '';
+          var str = decodeURIComponent(results[2].replace(/\+/g, ' '));
+          return rot13(str);
+      }
+
+
+      function rot13(str) {
+        var input     = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        var output    = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+        var index     = x => input.indexOf(x);
+        var translate = x => index(x) > -1 ? output[index(x)] : x;
+        str = str.split('').map(translate).join('');
+        return str;
+        }
+      
+      var name = getParameterByName('nm');
+      var message = getParameterByMessage('msg');
+      var yname = getParameterByyName('ynm');
+
+      var nameElem = document.getElementById("friendName");
+      var messageElem = document.getElementById("message");
+       var ynameElem = document.getElementById("yfriendName");
+
+      nameElem.innerHTML = name;
+       ynameElem.innerHTML = yname;
+      messageElem.innerHTML = message;
+      
+    </script>
+    <script  src="js/main.js"></script>
+
+</body>
+
+</html>
